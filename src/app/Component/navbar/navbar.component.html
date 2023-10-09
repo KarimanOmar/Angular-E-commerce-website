@@ -1,0 +1,63 @@
+<link
+  rel="stylesheet"
+  href="https://fonts.googleapis.com/css?family=Nunito&display=swap"
+/>
+<!-- Nunito Font -->
+<nav class="nav">
+  <div class="nav-items">
+    <div class="logo nav-item"></div>
+    <div class="nav-item">
+      <a class="link" [routerLink]="['/Home']" routerLinkActive="actiIttem"
+        >Home</a
+      >
+    </div>
+    <div class="nav-item">
+      <a class="link" [routerLink]="['/About-us']" routerLinkActive="actiIttem"
+        >About us</a
+      >
+    </div>
+    <div class="nav-item">
+      <a
+        class="link"
+        [routerLink]="['/Contact-us']"
+        routerLinkActive="actiIttem"
+        >Contact us</a
+      >
+    </div>
+    <div class="nav-item">
+      <a class="link" [routerLink]="['/Products']" routerLinkActive="actiIttem"
+        >Products</a
+      >
+    </div>
+    <div class="nav-item">
+      <a class="link" [routerLink]="['/Admin']" routerLinkActive="actiIttem"
+        >Admin</a
+      >
+    </div>
+    <div class="nav-item">
+      <a class="link"  [hidden]="isUserLogged" [routerLink]="['/signUp']" routerLinkActive="actiIttem"
+        >signUp</a
+      >
+    </div>
+    <div class="nav-item">
+      <a class="link" [hidden]="isUserLogged" [routerLink]="['/logIn']" routerLinkActive="actiIttem"
+        >logIn</a
+      >
+    </div>
+    <div class="nav-item">
+      <a class="link" [routerLink]="['/cart/cart']"  routerLinkActive="actiIttem"
+        >Cart</a
+      >
+    </div>
+    <div class="nav-item">
+      <a class="link" [routerLink]="['/cart/Wishlist']" routerLinkActive="actiIttem"
+        >Wishlist</a
+      >
+    </div>
+    <div class="nav-item">
+      <a class="link" (click)="userLogout()" [hidden]="!isUserLogged" routerLinkActive="actiIttem"
+        >logOut</a
+      >
+    </div>
+  </div>
+</nav>

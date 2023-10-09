@@ -1,0 +1,59 @@
+Day 5 Lab Assignments
+Complete on the previous lab, and do the following assignments:
+1.	Add a custom """service""" ‘Products Service’:
+a.	In the service add these functions (Depending on the classes you created before):
+i)	getProductsByCatID(catID): Products []
+ii)	getProductByID(prodID): Product
+*****************************************************************************************************
+b.	In """"products Component"""", and """"ProductDetails Component"""" use the previous service instead of using the classes directly.
+i)	Services in Angular are using Dependency Injection; you’ll need to inject the service in your component constructor, how?
+*****************************************************************************************************
+2.	Add a """route""" ‘products/:id’ that takes and id and display the given product details:
+a.	Add the route in the router module routes.
+*****************************************************************************************************
+b.	In your Shopping """""Cart component""""", add a button """‘details’""" in front of each product, that navigates to the route: ‘product/:id’.
+i)	You may need to use Router service, how?
+*****************************************************************************************************
+(1)	""""navigate()"""" function in router service, return a promise, try it to print any message in the console after the navigation is completed.
+ii)	Can you do it by a link instead?
+*****************************************************************************************************
+c.	Create """"ProductDetails Component"""", that receives an id and display the given product details.
+d.	In the """"ProductDetails Component"""", get the sent ID, and display the given product details.
+i)	You’ll need to use ActivatedRoute service, how?
+e.	Add (Go back) button, that uses browser’s back to go back to the products page.
+******************************************************************************************************
+3.	In product """details component""", add 2 new buttons: """Next product, Previous product""", that navigate to the previous or next product.
+a.	You will need to use activated """route service""" params observable instead of using activated route snapshots params, why?
+i)	You can refer to the following: https://www.c-sharpcorner.com/article/using-parammap-observable-for-handling-route-in-angular
+ii)	Don’t consider that the ID values are sequence values, you need to handle to get next and previous IDs from the services.
+iii)	Remember that: Angular won’t reload the component when navigating to the same component, and change URL param, you need to use ParamMap observable!
+iv)	Make the next button disabled when you’re on the last product, and previous """button disabled""" when you’re on the first product.
+
+
+xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx
+
+
+Enrich your knowledge [Super Bonus]:
+1.	Search for the following topics in routing, and explain using a demo:
+a.	Route guards: https://angular.io/guide/router#milestone-5-route-guards
+b.	Asynchronous routing (Lazy Loading route): https://angular.io/guide/router#milestone-6-asynchronous-routing
+c.	Child Routes: https://angular.io/guide/router#a-crisis-center-with-child-routes
+d.	Make a route that takes some data through Breadcrumbs: http://brianflove.com/2016/10/23/angular2-breadcrumb-using-router/  https://medium.com/@bo.vandersteene/angular-5-breadcrumb-c225fd9df5cf
+e.	What are router events? How to handle them? Explain with Demo?
+https://toddmotto.com/dynamic-page-titles-angular-2-router-events
+https://angular.io/api/router/Event
+f.	Displaying multiple routes in named outlets (Having more than outlet): https://angular.io/guide/router#displaying-multiple-routes-in-named-outlets
+2.	What are Observables in Angular? Explain using a demo?
+a.	You can refer to: https://angular.io/guide/observables
+3.	What is Angular RxJS library? Explain using a demo?
+a.	You can refer to: https://angular.io/guide/rx-library
+4.	What are: Subject, BehaviorSubject and ReplaySubject in Angular? Explain using a demo?
+a.	You can refer to: https://stackoverflow.com/questions/34376854/delegation-eventemitter-or-observable-in-angular/35568924#35568924
+5.	What is Angular localization? Use it to make an Arabic version of your Angular project.
+a.	You can refer to: https://angular.io/guide/i18n
+6.	What is Angular Material? Explain using a demo?
+a.	You can refer to: https://material.angular.io
+7.	How to use unit testing in Angular? Explain using a demo?
+a.	You can refer to: https://blog.logrocket.com/angular-unit-testing-tutorial-examples
+8.	What is Angular universal? Explain using a demo?
+a.	You can refer to: https://angular.io/guide/universal

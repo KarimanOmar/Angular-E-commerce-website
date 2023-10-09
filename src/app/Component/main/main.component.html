@@ -1,0 +1,198 @@
+<!-- b.	In your Shopping Cart component, add a button ‘details’ in front of each product, that navigates to the route: ‘product/:id’.
+i)	You may need to use Router service, how? -->
+<div class="row">
+  <div class="col-3">
+    <div
+      class="d-flex flex-column align-items-stretch flex-shrink-0 bg-body-tertiary my-2"
+      style="width: 100%"
+    >
+      <select
+        name="select"
+        id=""
+        class="my-2"
+        [(ngModel)]="listFilterByCaticory"
+      >
+        <option *ngFor="let item of AllCategories" value="{{ item.id }}">
+          {{ item.Name }}
+        </option>
+      </select>
+      <div class="list-group list-group-flush border-bottom scrollarea">
+        <a
+          href="#"
+          class="list-group-item list-group-item-action py-3 lh-sm"
+          aria-current="true"
+        >
+          <div class="d-flex w-100 align-items-center justify-content-between">
+            <strong class="mb-1">List group item heading</strong>
+            <small>Wed</small>
+          </div>
+        </a>
+        <a href="#" class="list-group-item list-group-item-action py-3 lh-sm">
+          <div class="d-flex w-100 align-items-center justify-content-between">
+            <strong class="mb-1">List group item heading</strong>
+            <small class="text-body-secondary">Tues</small>
+          </div>
+        </a>
+        <a href="#" class="list-group-item list-group-item-action py-3 lh-sm">
+          <div class="d-flex w-100 align-items-center justify-content-between">
+            <strong class="mb-1">List group item heading</strong>
+            <small class="text-body-secondary">Mon</small>
+          </div>
+        </a>
+
+        <a
+          href="#"
+          class="list-group-item list-group-item-action py-3 lh-sm"
+          aria-current="true"
+        >
+          <div class="d-flex w-100 align-items-center justify-content-between">
+            <strong class="mb-1">List group item heading</strong>
+            <small class="text-body-secondary">Wed</small>
+          </div>
+        </a>
+        <a href="#" class="list-group-item list-group-item-action py-3 lh-sm">
+          <div class="d-flex w-100 align-items-center justify-content-between">
+            <strong class="mb-1">List group item heading</strong>
+            <small class="text-body-secondary">Tues</small>
+          </div>
+        </a>
+        <a href="#" class="list-group-item list-group-item-action py-3 lh-sm">
+          <div class="d-flex w-100 align-items-center justify-content-between">
+            <strong class="mb-1">List group item heading</strong>
+            <small class="text-body-secondary">Mon</small>
+          </div>
+        </a>
+        <a
+          href="#"
+          class="list-group-item list-group-item-action py-3 lh-sm"
+          aria-current="true"
+        >
+          <div class="d-flex w-100 align-items-center justify-content-between">
+            <strong class="mb-1">List group item heading</strong>
+            <small class="text-body-secondary">Wed</small>
+          </div>
+        </a>
+        <a href="#" class="list-group-item list-group-item-action py-3 lh-sm">
+          <div class="d-flex w-100 align-items-center justify-content-between">
+            <strong class="mb-1">List group item heading</strong>
+            <small class="text-body-secondary">Tues</small>
+          </div>
+        </a>
+        <a href="#" class="list-group-item list-group-item-action py-3 lh-sm">
+          <div class="d-flex w-100 align-items-center justify-content-between">
+            <strong class="mb-1">List group item heading</strong>
+            <small class="text-body-secondary">Mon</small>
+          </div>
+        </a>
+        <a
+          href="#"
+          class="list-group-item list-group-item-action py-3 lh-sm"
+          aria-current="true"
+        >
+          <div class="d-flex w-100 align-items-center justify-content-between">
+            <strong class="mb-1">List group item heading</strong>
+            <small class="text-body-secondary">Wed</small>
+          </div>
+        </a>
+        <a href="#" class="list-group-item list-group-item-action py-3 lh-sm">
+          <div class="d-flex w-100 align-items-center justify-content-between">
+            <strong class="mb-1">List group item heading</strong>
+            <small class="text-body-secondary">Tues</small>
+          </div>
+        </a>
+        <a href="#" class="list-group-item list-group-item-action py-3 lh-sm">
+          <div class="d-flex w-100 align-items-center justify-content-between">
+            <strong class="mb-1">List group item heading</strong>
+            <small class="text-body-secondary">Mon</small>
+          </div>
+        </a>
+      </div>
+    </div>
+    <h2>Branches</h2>
+    <ul>
+      <li *ngFor="let item of store.branches">{{ item }}</li>
+    </ul>
+  </div>
+  <div class="col-9">
+    <div class="row my-2">
+      <div class="col-sm-4 mb-3 p-1" *ngFor="let item of filteredProducts">
+        <div
+          class="p-2"
+          [ngClass]="{ 'bg-warning': item.Quantity == 1 }"
+          appCustomDirective
+        >
+          <img [src]="item.Img" class="img-fluid rounded-top" width="100%" />
+          <h6>
+            <small>{{ item.Name | uppercase }}</small>
+          </h6>
+          <h5>{{ item.Price | currency : "EGP" }}</h5>
+          <ng-container [ngSwitch]="item.Quantity">
+            <ng-container *ngSwitchCase="0">out of stock</ng-container>
+            <ng-container *ngSwitchCase="1">last one item</ng-container>
+            <ng-container *ngSwitchCase="2">last two item</ng-container>
+            <ng-container *ngSwitchDefault>in stock</ng-container>
+          </ng-container>
+          <ng-container *ngIf="item.Quantity > 0; else outOfStokTemplate"
+            ><i class="fa-solid fa-circle-check text-success"></i
+          ></ng-container>
+          <ng-template #outOfStokTemplate
+            ><i class="fa-solid fa-circle-xmark text-danger"></i
+          ></ng-template>
+          <p>
+            <small class="text-danger" *ngIf="item.Discount != 'No Discount'"
+              >We offer an explicit discount of : {{ item.Discount }}</small
+            >
+          </p>
+          <p>
+            <small
+              class="text-secondary"
+              *ngIf="item.Discount != 'No Discount'"
+              >{{ date1 | date : "shortDate" }}</small
+            >
+          </p>
+          <div class="row p-2">
+            <h5 class="col-4"><small>Count :</small></h5>
+            <div class="col-4">
+              <input
+                [(ngModel)]="coundProdact"
+                class="form-control count"
+                type="number"
+                max="{{ item.Quantity }}"
+                min="1"
+              />
+            </div>
+          </div>
+          <div class="d-flex">
+            <div class="p-1">
+              <button
+                class="btn btn-danger"
+                [disabled]="!item.Quantity"
+                (click)="toggleImage()"
+                (click)="addToCard(item)"
+              >
+                Add To Cart<i
+                  class="fa-sharp fa-solid fa-cart-plus modifyIcon"
+                ></i>
+              </button>
+            </div>
+            <div class="p-1">
+              <button class="btn btn-warning" (click)="pDetails(item.id)">
+                Details
+              </button>
+            </div>
+            <div class="p-1">
+              <button class="btn btn-warning" (click)="deleteProduct(item)">
+                Remove
+              </button>
+            </div>
+            <div class="p-1">
+              <button class="btn btn-warning" (click)="editProduct(item.id)">
+                edit
+              </button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

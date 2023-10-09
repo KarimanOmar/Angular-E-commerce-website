@@ -1,0 +1,94 @@
+<div class="row">
+  <div class="col-12 text-center">
+    <img src="{{ store.Logo }}" class="img-fluid" *ngIf="sowImage" />
+    <h1 class="text-success py-1" *ngIf="!sowImage">
+      Thanks for purchasing from our Store "{{ prodacdeListService.ClientName }}"
+    </h1>
+    <!-- Make a custom pipe, that formats the credit card number
+       given in format like “0000000000000000” to this format “0000 – 0000 – 0000 – 0000”. -->
+    <h1 class="text-success py-1" *ngIf="!sowImage">
+      your card number is : "{{ prodacdeListService.Cardnumber | cardnumber }}"
+    </h1>
+  </div>
+</div>
+<div class="row">
+  <div class="col-12">
+    <nav
+      class="navbar navbar-expand-lg bg-body-tertiary bg-dark border-bottom border-body"
+      data-bs-theme="dark"
+    >
+      <div class="container-fluid">
+        <a class="navbar-brand" href="#">{{ store.Store }}</a>
+        <button
+          class="navbar-toggler"
+          type="button"
+          data-bs-toggle="collapse"
+          data-bs-target="#navbarSupportedContent"
+          aria-controls="navbarSupportedContent"
+          aria-expanded="false"
+          aria-label="Toggle navigation"
+        >
+          <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+          <ul class="navbar-nav me-auto mb-2 mb-lg-0"></ul>
+          <div class="d-flex">
+            <input
+              name="Search"
+              class="form-control me-2"
+              type="text"
+              placeholder="Search"
+              [(ngModel)]="listFilter"
+            />
+            <button class="btn btn-outline-light" type="submit">Search</button>
+          </div>
+        </div>
+      </div>
+    </nav>
+  </div>
+</div>
+<div class="row p-2">
+  <h5 class="col-2">Search by price :</h5>
+  <div class="col-10">
+    <input
+      name="Search"
+      class="form-control"
+      type="text"
+      placeholder="Search"
+      [(ngModel)]="listFilterByNumber"
+    />
+  </div>
+</div>
+
+<app-main
+  [listFilterByName]="listFilter"
+  [listFilterByPrice]="listFilterByNumber"
+  (newProductIncardEvent)="func1($event)"
+  (sowImageEvent)="func2($event)"
+  (productNumberEvent)="func3($event)"
+></app-main>
+<table class="table caption-top">
+  <caption>
+    List of products
+  </caption>
+  <thead>
+    <tr>
+      <th scope="col">Name</th>
+      <th scope="col">Price</th>
+      <th scope="col">Count</th>
+      <th scope="col">Total</th>
+      <th scope="col">Delete</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr *ngFor="let item of cart">
+      <td>{{ item.Name }}</td>
+      <td>{{ item.Price }}</td>
+      <td>{{ item.productNumber }}</td>
+      <td>{{ item.totalPrice }}</td>
+      <td class="text-danger" (click)="deleteItme(item)">
+        <i class="fa-solid fa-xmark"></i>
+      </td>
+    </tr>
+  </tbody>
+</table>

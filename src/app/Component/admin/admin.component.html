@@ -1,0 +1,255 @@
+<div  *ngIf="!protect" class="card" style="margin-bottom: 8.5rem">
+  <div class="card-header">Add new Product</div>
+  <div class="card-body">
+    <form (ngSubmit)="addProduct()" #addProdactForm="ngForm">
+      <div class="form-group row mb-2">
+        <label for="firstName" class="col-md-2 col-form-label">Name</label>
+        <div class="col-md-8">
+          <input
+            type="text"
+            class="form-control"
+            id="Name"
+            name="Name"
+            required
+            minlength="3"
+            [(ngModel)]="Product.Name"
+            pattern="[A-Za-z' '0-9-]{3,}"
+            #nameProtact="ngModel"
+            [ngClass]="{
+              'is-invalid':
+                (nameProtact.touched || nameProtact.dirty) &&
+                nameProtact.invalid
+            }"
+          />
+          <span class="invalid-feedback">
+            <span *ngIf="nameProtact.errors?.['required']"
+              >Please enter protact name</span
+            >
+            <span *ngIf="nameProtact.errors?.['pattern']"
+              >protact must be at least 3 characters</span
+            >
+          </span>
+        </div>
+      </div>
+      <div class="form-group row mb-2">
+        <label class="col-md-2 col-form-label" for="lastNameId">Price</label>
+        <div class="col-md-8">
+          <input
+            class="form-control"
+            id="Price"
+            type="text"
+            required
+            pattern="[A-Za-z]{5,}"
+            name="Price"
+            [(ngModel)]="Product.Price"
+            pattern="^[0-9]{1,}$"
+            #priceProtact="ngModel"
+            [ngClass]="{
+              'is-invalid':
+                (priceProtact.touched || priceProtact.dirty) &&
+                priceProtact.invalid
+            }"
+          />
+          <span class="invalid-feedback">
+            <span *ngIf="priceProtact.errors?.['required']"
+              >Please enter protact Price</span
+            >
+            <span *ngIf="priceProtact.errors?.['pattern']"
+              >protact must be at least 1 number</span
+            >
+          </span>
+        </div>
+      </div>
+      <div class="form-group row mb-2">
+        <label class="col-md-2 col-form-label" for="lastNameId">Quantity</label>
+        <div class="col-md-8">
+          <input
+            class="form-control"
+            id="Quantity"
+            type="text"
+            required
+            pattern="[A-Za-z]{5,}"
+            name="Quantity"
+            pattern="^[0-9]{1,}$"
+            [(ngModel)]="Product.Quantity"
+            #quantityProtact="ngModel"
+            [ngClass]="{
+              'is-invalid':
+                (quantityProtact.touched || quantityProtact.dirty) &&
+                quantityProtact.invalid
+            }"
+          />
+          <span class="invalid-feedback">
+            <span *ngIf="quantityProtact.errors?.['required']"
+              >Please enter protact Quantity</span
+            >
+            <span *ngIf="quantityProtact.errors?.['pattern']"
+              >protact must be at least 1 number</span
+            >
+          </span>
+        </div>
+      </div>
+
+      <div class="form-group row mb-2">
+        <label class="col-md-2 col-form-label" for="emailId">Img</label>
+        <div class="col-md-8">
+          <input
+            class="form-control"
+            id="Img"
+            type="text"
+            name="Img"
+            required
+            [(ngModel)]="Product.Img"
+            #imgProtact="ngModel"
+            [ngClass]="{
+              'is-invalid':
+                (imgProtact.touched || imgProtact.dirty) && imgProtact.invalid
+            }"
+          />
+          <span class="invalid-feedback">
+            <span *ngIf="imgProtact.errors?.['required']"
+              >Please enter protact Img</span
+            >
+          </span>
+        </div>
+      </div>
+
+      <button
+
+        type="submit"
+        class="btn btn-success"
+        [disabled]="addProdactForm.invalid"
+      >
+        Add
+      </button>
+    </form>
+  </div>
+</div>
+<div  *ngIf="protect" class="card" style="margin-bottom: 8.5rem">
+  <div class="card-header">Add new Product</div>
+  <div class="card-body">
+    <form (ngSubmit)="editProduct()" #addProdactForm="ngForm">
+      <div class="form-group row mb-2">
+        <label for="firstName" class="col-md-2 col-form-label">Name</label>
+        <div class="col-md-8">
+          <input
+            type="text"
+            class="form-control"
+            id="Name"
+            name="Name"
+            required
+            minlength="3"
+            [(ngModel)]="protect.Name"
+            pattern="[A-Za-z' '0-9-]{3,}"
+            #nameProtact="ngModel"
+            [ngClass]="{
+              'is-invalid':
+                (nameProtact.touched || nameProtact.dirty) &&
+                nameProtact.invalid
+            }"
+          />
+          <span class="invalid-feedback">
+            <span *ngIf="nameProtact.errors?.['required']"
+              >Please enter protact name</span
+            >
+            <span *ngIf="nameProtact.errors?.['pattern']"
+              >protact must be at least 3 characters</span
+            >
+          </span>
+        </div>
+      </div>
+      <div class="form-group row mb-2">
+        <label class="col-md-2 col-form-label" for="lastNameId">Price</label>
+        <div class="col-md-8">
+          <input
+            class="form-control"
+            id="Price"
+            type="text"
+            required
+            pattern="[A-Za-z]{5,}"
+            name="Price"
+            [(ngModel)]="protect.Price"
+            pattern="[0-9 . ]{1,}"
+            #priceProtact="ngModel"
+            [ngClass]="{
+              'is-invalid':
+                (priceProtact.touched || priceProtact.dirty) &&
+                priceProtact.invalid
+            }"
+          />
+          <span class="invalid-feedback">
+            <span *ngIf="priceProtact.errors?.['required']"
+              >Please enter protact Price</span
+            >
+            <span *ngIf="priceProtact.errors?.['pattern']"
+              >protact must be at least 1 number</span
+            >
+          </span>
+        </div>
+      </div>
+      <div class="form-group row mb-2">
+        <label class="col-md-2 col-form-label" for="lastNameId">Quantity</label>
+        <div class="col-md-8">
+          <input
+            class="form-control"
+            id="Quantity"
+            type="text"
+            required
+            pattern="[A-Za-z]{5,}"
+            name="Quantity"
+            pattern="^[0-9]{1,}$"
+            [(ngModel)]="protect.Quantity"
+            #quantityProtact="ngModel"
+            [ngClass]="{
+              'is-invalid':
+                (quantityProtact.touched || quantityProtact.dirty) &&
+                quantityProtact.invalid
+            }"
+          />
+          <span class="invalid-feedback">
+            <span *ngIf="quantityProtact.errors?.['required']"
+              >Please enter protact Quantity</span
+            >
+            <span *ngIf="quantityProtact.errors?.['pattern']"
+              >protact must be at least 1 number</span
+            >
+          </span>
+        </div>
+      </div>
+
+      <div class="form-group row mb-2">
+        <label class="col-md-2 col-form-label" for="emailId">Img</label>
+        <div class="col-md-8">
+          <input
+            class="form-control"
+            id="Img"
+            type="text"
+            name="Img"
+            required
+            [(ngModel)]="protect.Img"
+            #imgProtact="ngModel"
+            [ngClass]="{
+              'is-invalid':
+                (imgProtact.touched || imgProtact.dirty) && imgProtact.invalid
+            }"
+
+          />
+          <span class="invalid-feedback">
+            <span *ngIf="imgProtact.errors?.['required']"
+              >Please enter protact Img</span
+            >
+          </span>
+        </div>
+      </div>
+
+      <button
+
+        type="submit"
+        class="btn btn-success"
+        [disabled]="addProdactForm.invalid"
+      >
+        Edit
+      </button>
+    </form>
+  </div>
+</div>
